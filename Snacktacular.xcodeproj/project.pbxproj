@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF313D3129DAAE810055BBEB /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313D3029DAAE810055BBEB /* Spot.swift */; };
+		DF313D3329DAB0140055BBEB /* SpotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313D3229DAB0140055BBEB /* SpotDetailView.swift */; };
+		DF313D3529DAB64A0055BBEB /* SpotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313D3429DAB64A0055BBEB /* SpotViewModel.swift */; };
+		DF40743C29DA999700700AD9 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40743B29DA999700700AD9 /* ListView.swift */; };
 		DFB8747E29DA1DAD005E996D /* SnacktacularApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8747D29DA1DAD005E996D /* SnacktacularApp.swift */; };
 		DFB8748029DA1DAD005E996D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8747F29DA1DAD005E996D /* LoginView.swift */; };
 		DFB8748229DA1DAF005E996D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFB8748129DA1DAF005E996D /* Assets.xcassets */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF313D3029DAAE810055BBEB /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		DF313D3229DAB0140055BBEB /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
+		DF313D3429DAB64A0055BBEB /* SpotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotViewModel.swift; sourceTree = "<group>"; };
+		DF40743B29DA999700700AD9 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		DFB8747A29DA1DAD005E996D /* Snacktacular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snacktacular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFB8747D29DA1DAD005E996D /* SnacktacularApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacktacularApp.swift; sourceTree = "<group>"; };
 		DFB8747F29DA1DAD005E996D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -64,7 +72,11 @@
 			children = (
 				DFB8748B29DA1DE6005E996D /* Info.plist */,
 				DFB8747D29DA1DAD005E996D /* SnacktacularApp.swift */,
+				DF313D3029DAAE810055BBEB /* Spot.swift */,
+				DF313D3429DAB64A0055BBEB /* SpotViewModel.swift */,
 				DFB8747F29DA1DAD005E996D /* LoginView.swift */,
+				DF40743B29DA999700700AD9 /* ListView.swift */,
+				DF313D3229DAB0140055BBEB /* SpotDetailView.swift */,
 				DFB8748129DA1DAF005E996D /* Assets.xcassets */,
 				DFB8749529DA21C8005E996D /* GoogleService-Info.plist */,
 				DFB8748329DA1DAF005E996D /* Preview Content */,
@@ -160,8 +172,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF313D3329DAB0140055BBEB /* SpotDetailView.swift in Sources */,
 				DFB8748029DA1DAD005E996D /* LoginView.swift in Sources */,
+				DF313D3529DAB64A0055BBEB /* SpotViewModel.swift in Sources */,
 				DFB8747E29DA1DAD005E996D /* SnacktacularApp.swift in Sources */,
+				DF40743C29DA999700700AD9 /* ListView.swift in Sources */,
+				DF313D3129DAAE810055BBEB /* Spot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

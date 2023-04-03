@@ -9,14 +9,25 @@ import SwiftUI
 import Firebase
 
 struct LoginView: View {
+    
+    enum Field {
+        case email, password
+    }
+    
+    
     @State private var email = ""
     @State private var password = ""
     @State private var showingAlert = false
     @State private var alertMessage = ""
+    @State private var buttonsDisabled = true
+    @State private var path = NavigationPath()
+    
+    @FocusState private var focusField: Field?
+    
     
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Image("logo")
                 .resizable()
                 .scaledToFit()
@@ -27,9 +38,23 @@ struct LoginView: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .submitLabel(.next)
+                    .focused($focusField, equals: .email)
+                    .onSubmit {
+                        focusField = .password
+                    }  // .onSubmit
+                    .onChange(of: email) { _ in
+                        enableButtons()
+                    }
                 SecureField("Password", text: $password)
                     .textInputAutocapitalization(.never)
                     .submitLabel(.done)
+                    .focused($focusField, equals: .password)
+                    .onSubmit {
+                        focusField = nil    // Will dismiss the keyboard
+                    }
+                    .onChange(of: password) { _ in
+                        enableButtons()
+                    }
             }  // Group
             .textFieldStyle(.roundedBorder)
             .overlay {
@@ -52,17 +77,39 @@ struct LoginView: View {
                 }
                 .padding(.leading)
             }  // HStack
+            .disabled(buttonsDisabled)
             .buttonStyle(.borderedProminent)
             .tint(Color("SnackColor"))
             .font(.title2)
             .padding(.top)
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: String.self) { view in
+                if view == "ListView" {
+                    ListView()
+                }  // if view
+            }  // .navigationDestination
         }  // NavigationStack
         .alert(alertMessage, isPresented: $showingAlert) {
             Button("OK", role: .cancel) {}
-        }
+        }  // .alert
+        .onAppear {
+            // if logged in when app runs navigate to the new screen & skip login screen.
+            if Auth.auth().currentUser != nil {
+                print("🪵 Login Successful!")
+                path.append("ListView")
+            }
+        }  // .onAppear
     }  // some Veiw
     
+    
+    func enableButtons() {
+        let emailsGood = email.count >= 6 && email.contains("@")
+        let passwordIsGood = password.count >= 6
+        
+        buttonsDisabled = !(emailsGood && passwordIsGood)
+    }  // func enableButtons
+    
+        
     func registrer() {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {    // login error occurred
@@ -71,7 +118,7 @@ struct LoginView: View {
                 showingAlert = true
             } else {
                 print("🤡 Create New Account Success!")
-                // TODO: Load ListView
+                path.append("ListView")
             }  // if let error
         }  // Auth.auth()
     }  // func register
@@ -85,7 +132,7 @@ struct LoginView: View {
                 showingAlert = true
             } else {
                 print("🪵 Login Successful!")
-                // TODO: Load ListView
+                path.append("ListView")
             }  // if let error
         }  // Auth.auth()
     }  // func login
