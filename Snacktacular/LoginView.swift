@@ -20,14 +20,14 @@ struct LoginView: View {
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var buttonsDisabled = true
-    @State private var path = NavigationPath()
+    @State private var presentSheet = false
     
     @FocusState private var focusField: Field?
     
     
     
     var body: some View {
-        NavigationStack(path: $path) {
+        VStack {
             Image("logo")
                 .resizable()
                 .scaledToFit()
@@ -82,13 +82,7 @@ struct LoginView: View {
             .tint(Color("SnackColor"))
             .font(.title2)
             .padding(.top)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: String.self) { view in
-                if view == "ListView" {
-                    ListView()
-                }  // if view
-            }  // .navigationDestination
-        }  // NavigationStack
+        }  // VStack
         .alert(alertMessage, isPresented: $showingAlert) {
             Button("OK", role: .cancel) {}
         }  // .alert
@@ -96,9 +90,14 @@ struct LoginView: View {
             // if logged in when app runs navigate to the new screen & skip login screen.
             if Auth.auth().currentUser != nil {
                 print("🪵 Login Successful!")
-                path.append("ListView")
+                presentSheet = true
             }
         }  // .onAppear
+        .fullScreenCover(isPresented: $presentSheet) {
+            ListView()
+        }
+        
+        
     }  // some Veiw
     
     
@@ -118,7 +117,7 @@ struct LoginView: View {
                 showingAlert = true
             } else {
                 print("🤡 Create New Account Success!")
-                path.append("ListView")
+                presentSheet = true
             }  // if let error
         }  // Auth.auth()
     }  // func register
@@ -132,7 +131,7 @@ struct LoginView: View {
                 showingAlert = true
             } else {
                 print("🪵 Login Successful!")
-                path.append("ListView")
+                presentSheet = true
             }  // if let error
         }  // Auth.auth()
     }  // func login
