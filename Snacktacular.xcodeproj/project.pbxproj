@@ -18,6 +18,7 @@
 		DF313DA829DD06940055BBEB /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313DA729DD06940055BBEB /* ReviewView.swift */; };
 		DF313DAA29DD47FF0055BBEB /* StarsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313DA929DD47FF0055BBEB /* StarsSelectionView.swift */; };
 		DF313DAC29DD58D50055BBEB /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313DAB29DD58D50055BBEB /* ReviewViewModel.swift */; };
+		DF313DAE29DFDD650055BBEB /* SpotReviewRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313DAD29DFDD630055BBEB /* SpotReviewRowView.swift */; };
 		DF40743C29DA999700700AD9 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40743B29DA999700700AD9 /* ListView.swift */; };
 		DFB8747E29DA1DAD005E996D /* SnacktacularApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8747D29DA1DAD005E996D /* SnacktacularApp.swift */; };
 		DFB8748029DA1DAD005E996D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8747F29DA1DAD005E996D /* LoginView.swift */; };
@@ -42,6 +43,7 @@
 		DF313DA729DD06940055BBEB /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		DF313DA929DD47FF0055BBEB /* StarsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsSelectionView.swift; sourceTree = "<group>"; };
 		DF313DAB29DD58D50055BBEB /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		DF313DAD29DFDD630055BBEB /* SpotReviewRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotReviewRowView.swift; sourceTree = "<group>"; };
 		DF40743B29DA999700700AD9 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		DFB8747A29DA1DAD005E996D /* Snacktacular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snacktacular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFB8747D29DA1DAD005E996D /* SnacktacularApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacktacularApp.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				DFB8747F29DA1DAD005E996D /* LoginView.swift */,
 				DF40743B29DA999700700AD9 /* ListView.swift */,
 				DF313D3229DAB0140055BBEB /* SpotDetailView.swift */,
+				DF313DAD29DFDD630055BBEB /* SpotReviewRowView.swift */,
 				DF313DA729DD06940055BBEB /* ReviewView.swift */,
 				DF313DA929DD47FF0055BBEB /* StarsSelectionView.swift */,
 				DF313D5C29DBE4D10055BBEB /* PlaceLookupView.swift */,
@@ -226,6 +229,7 @@
 				DF313D3529DAB64A0055BBEB /* SpotViewModel.swift in Sources */,
 				DF313DAA29DD47FF0055BBEB /* StarsSelectionView.swift in Sources */,
 				DF313D5E29DBE4D10055BBEB /* PlaceViewModel.swift in Sources */,
+				DF313DAE29DFDD650055BBEB /* SpotReviewRowView.swift in Sources */,
 				DF313DA829DD06940055BBEB /* ReviewView.swift in Sources */,
 				DF313D5F29DBE4D10055BBEB /* LocationManager.swift in Sources */,
 				DF313D6029DBE4D10055BBEB /* PlaceLookupView.swift in Sources */,

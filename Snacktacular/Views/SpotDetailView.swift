@@ -39,6 +39,16 @@ struct SpotDetailView: View {
     let regionSize = 500.0
     var previewRunning = false
     
+    var avgRating: String {
+        guard reviews.count != 0 else {
+            return "-.-"
+        }  // guard
+        
+        let averageValue = Double(reviews.reduce(0) {$0 + $1.rating}) / Double(reviews.count)
+        return String(format: "%.1f", averageValue)
+    }  // avgRating
+    
+    
     
     var body: some View {
         VStack {
@@ -72,7 +82,7 @@ struct SpotDetailView: View {
                         NavigationLink {
                             ReviewView(spot: spot, review: review)
                         } label: {
-                            Text(review.title)  //TODO: Build a custom cell showing stars, title and body
+                            SpotReviewRowView(review: review)  // Build a custom cell showing stars, title and body
                         }
 
                     }
@@ -81,7 +91,7 @@ struct SpotDetailView: View {
                         Text("Avg. Rating:")
                             .font(.title2)
                             .bold()
-                        Text("4.5")   //TODO: Change to a computed property
+                        Text(avgRating)   
                             .font(.title)
                             .fontWeight(.black)
                             .foregroundColor(Color("SnackColor"))
