@@ -31,6 +31,9 @@ struct SpotDetailView: View {
     @State private var mapRegion = MKCoordinateRegion()
     @State private var annotations: [Annotation] = []
     @State private var showReviewViewSheet = false
+    @State private var showSaveAlert = false
+    @State private var showingAsSheet = false
+    
     
     
     let regionSize = 500.0
@@ -86,7 +89,11 @@ struct SpotDetailView: View {
                         Spacer()
                         
                         Button("Rate It") {
-                            showReviewViewSheet.toggle()
+                            if spot.id == nil {
+                                showSaveAlert.toggle()
+                            } else {
+                                showReviewViewSheet.toggle()
+                            }  // if spot.id == nil
                         }  // Button
                         .buttonStyle(.borderedProminent)
                         .bold()
@@ -102,10 +109,12 @@ struct SpotDetailView: View {
             
         }  // VStack
         .onAppear {
-            if !previewRunning {   // This is to prevent PreviewProvider error
+            if !previewRunning && spot.id != nil {   // This is to prevent PreviewProvider error
                 $reviews.path = "spots/\(spot.id ?? "")/reviews"
                 print("reviews.path -> \($reviews.path)")
-            }  // if
+            } else {   // spot.id starts out as nil
+                showingAsSheet = true
+            }
             
             
             if spot.id != nil {  // If we have a spot center map on the spot
@@ -120,36 +129,49 @@ struct SpotDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(spot.id == nil)
         .toolbar {
-            if spot.id == nil {     // New spot so show Cancel/Save buttons
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
-                    }  // Button
-                }  // ToolbarItem - Cancel
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        Task {
-                            let success = await spotVM.saveSpot(spot: spot)
-                            if success {
-                                dismiss()
-                            } else {
-                                print("🤮 ERROR: Error saving spot!")
-                            }  // if success
-                        }  // Task
-                        dismiss()
-                    }  // Button
-                }  // ToolbarItem - Cancel
-                
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Spacer()
-                    Button {
-                        showPlaceLookupSheet.toggle()
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                        Text("Lookup Place")
-                    }  // Button
-                }  // ToolbarItem - Cancel
-            }  // if
+            if showingAsSheet {   // New spot so show Cancel / Save buttons
+                if spot.id == nil && showingAsSheet {     // New spot so show Cancel/Save buttons
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") {
+                            dismiss()
+                        }  // Button
+                    }  // ToolbarItem - Cancel
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Save") {
+                            Task {
+                                let success = await spotVM.saveSpot(spot: spot)
+                                spot = spotVM.spot
+                                
+                                if success {
+                                    // If we didn't update the path after saving spot, we wouldn't be able to show nwe reviews added
+                                    $reviews.path = "spots/\(spot.id ?? "")/reviews"
+                                    showReviewViewSheet.toggle()
+                                    
+                                } else {
+                                    print("🤮 ERROR: Error saving spot!")
+                                }  // if success
+                            }  // Task
+                            dismiss()
+                        }  // Button
+                    }  // ToolbarItem - Cancel
+                    
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        Spacer()
+                        Button {
+                            showPlaceLookupSheet.toggle()
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                            Text("Lookup Place")
+                        }  // Button
+                    }  // ToolbarItem - Cancel
+                } else if showingAsSheet && spot.id != nil {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Done") {
+                            dismiss()
+                        }  // Button
+                    }  // ToolbarItem
+                }  // if
+            }   // if showingAsSheet
         }  // .toolbar
         .sheet(isPresented: $showPlaceLookupSheet) {
             PlaceLookupView(spot: $spot)
@@ -159,6 +181,24 @@ struct SpotDetailView: View {
                 ReviewView(spot: spot, review: Review())
             }  // NavigationStack
         }  // .sheet
+        .alert("Can Not Rate Place Unless It Is Saved", isPresented: $showSaveAlert) {
+            Button("Cancel", role: .cancel) {}
+            Button("Save", role: .none) {
+                Task {
+                    let success = await spotVM.saveSpot(spot: spot)
+                    spot = spotVM.spot
+                    
+                    if success {
+                        showReviewViewSheet.toggle()
+                    } else {
+                        print("🤮 ERROR: Error saving spot!")
+                    }  // if success
+                }  // Task
+            }  // Button - Save
+        } message: {
+            Text( "Would you like to save this first so that you can enter a review?")
+        }
+
         
     }  // some View
 }  // SpotDetailView
