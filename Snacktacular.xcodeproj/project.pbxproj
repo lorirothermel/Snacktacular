@@ -20,6 +20,9 @@
 		DF313DAC29DD58D50055BBEB /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313DAB29DD58D50055BBEB /* ReviewViewModel.swift */; };
 		DF313DAE29DFDD650055BBEB /* SpotReviewRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF313DAD29DFDD630055BBEB /* SpotReviewRowView.swift */; };
 		DF40743C29DA999700700AD9 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40743B29DA999700700AD9 /* ListView.swift */; };
+		DF86030329E129D400B94DD4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF86030229E129D400B94DD4 /* Photo.swift */; };
+		DF86030529E1342F00B94DD4 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF86030429E1342F00B94DD4 /* PhotoView.swift */; };
+		DF86030729E143ED00B94DD4 /* SpotDetailPhotosScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF86030629E143ED00B94DD4 /* SpotDetailPhotosScrollView.swift */; };
 		DFB8747E29DA1DAD005E996D /* SnacktacularApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8747D29DA1DAD005E996D /* SnacktacularApp.swift */; };
 		DFB8748029DA1DAD005E996D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8747F29DA1DAD005E996D /* LoginView.swift */; };
 		DFB8748229DA1DAF005E996D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFB8748129DA1DAF005E996D /* Assets.xcassets */; };
@@ -45,6 +48,9 @@
 		DF313DAB29DD58D50055BBEB /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DF313DAD29DFDD630055BBEB /* SpotReviewRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotReviewRowView.swift; sourceTree = "<group>"; };
 		DF40743B29DA999700700AD9 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		DF86030229E129D400B94DD4 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		DF86030429E1342F00B94DD4 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		DF86030629E143ED00B94DD4 /* SpotDetailPhotosScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailPhotosScrollView.swift; sourceTree = "<group>"; };
 		DFB8747A29DA1DAD005E996D /* Snacktacular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snacktacular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFB8747D29DA1DAD005E996D /* SnacktacularApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacktacularApp.swift; sourceTree = "<group>"; };
 		DFB8747F29DA1DAD005E996D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -75,6 +81,7 @@
 				DF313D3029DAAE810055BBEB /* Spot.swift */,
 				DF313DA529DD04300055BBEB /* Review.swift */,
 				DF313D5D29DBE4D10055BBEB /* Place.swift */,
+				DF86030229E129D400B94DD4 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -96,8 +103,10 @@
 				DFB8747F29DA1DAD005E996D /* LoginView.swift */,
 				DF40743B29DA999700700AD9 /* ListView.swift */,
 				DF313D3229DAB0140055BBEB /* SpotDetailView.swift */,
+				DF86030629E143ED00B94DD4 /* SpotDetailPhotosScrollView.swift */,
 				DF313DAD29DFDD630055BBEB /* SpotReviewRowView.swift */,
 				DF313DA729DD06940055BBEB /* ReviewView.swift */,
+				DF86030429E1342F00B94DD4 /* PhotoView.swift */,
 				DF313DA929DD47FF0055BBEB /* StarsSelectionView.swift */,
 				DF313D5C29DBE4D10055BBEB /* PlaceLookupView.swift */,
 			);
@@ -223,14 +232,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF86030329E129D400B94DD4 /* Photo.swift in Sources */,
 				DF313D3329DAB0140055BBEB /* SpotDetailView.swift in Sources */,
 				DFB8748029DA1DAD005E996D /* LoginView.swift in Sources */,
+				DF86030529E1342F00B94DD4 /* PhotoView.swift in Sources */,
 				DF313DAC29DD58D50055BBEB /* ReviewViewModel.swift in Sources */,
 				DF313D3529DAB64A0055BBEB /* SpotViewModel.swift in Sources */,
 				DF313DAA29DD47FF0055BBEB /* StarsSelectionView.swift in Sources */,
 				DF313D5E29DBE4D10055BBEB /* PlaceViewModel.swift in Sources */,
 				DF313DAE29DFDD650055BBEB /* SpotReviewRowView.swift in Sources */,
 				DF313DA829DD06940055BBEB /* ReviewView.swift in Sources */,
+				DF86030729E143ED00B94DD4 /* SpotDetailPhotosScrollView.swift in Sources */,
 				DF313D5F29DBE4D10055BBEB /* LocationManager.swift in Sources */,
 				DF313D6029DBE4D10055BBEB /* PlaceLookupView.swift in Sources */,
 				DF313DA629DD04300055BBEB /* Review.swift in Sources */,
