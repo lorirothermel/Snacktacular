@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDTjv9bVlmYlxn9WQy9vLKnDkANE1gpxws</string>
+	<key>GCM_SENDER_ID</key>
+	<string>241388820697</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.rothermel1.Snacktacular</string>
+	<key>PROJECT_ID</key>
+	<string>snacktacular-30cac</string>
+	<key>STORAGE_BUCKET</key>
+	<string>snacktacular-30cac.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:241388820697:ios:1bab975fa9605c417e86c8</string>
+</dict>
+</plist>
