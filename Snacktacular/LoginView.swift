@@ -19,6 +19,7 @@ struct LoginView: View {
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var buttonsDisabled = true
+    @State private var presentSheet = false
     
     
     
@@ -28,7 +29,7 @@ struct LoginView: View {
     }  // enum Field
     
     var body: some View {
-        NavigationStack {
+        VStack {
             Image("logo")
                 .resizable()
                 .scaledToFit()
@@ -89,12 +90,21 @@ struct LoginView: View {
             .tint(Color("SnackColor"))
             .font(.title2)
             .padding(.top)
-            .navigationBarTitleDisplayMode(.inline)
-            
-        }  // NavigationStack
+                                 
+        }  // VStack
         .alert(alertMessage, isPresented: $showingAlert) {
             Button("OK", role: .cancel) {}
         }  // .alert
+        .onAppear {
+            // If logged in when app runs navigate to the new screen & skip login.
+            if Auth.auth().currentUser != nil {
+                print("😇 Login Success!!!!")
+                presentSheet = true
+            }  // if
+        }  // .onAppear
+        .fullScreenCover(isPresented: $presentSheet) {
+            ListView()
+        }  // .fullScreenCover
         
     }  // some View
     
@@ -115,7 +125,7 @@ struct LoginView: View {
                 showingAlert = true
             } else {
                 print("😇 Registration Success!!!!")
-                    // TODO: Load ListView
+                presentSheet = true
             }  // if else
         }  // Auth.auth().createUser
         
@@ -131,7 +141,7 @@ struct LoginView: View {
                 showingAlert = true
             } else {
                 print("😇 Login Success!!!!")
-                    // TODO: Load ListView
+                presentSheet = true
             }  // if else
         }  // Auth.auth().signIn
         
